@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Aestheticfoliage/npm-inquirer-readMe-generator/issues"
   },
-  "homepage": "https://github.com/Aestheticfoliage/npm-inquirer-readMe-generator#readme"
+  "homepage": "https://github.com/Aestheticfoliage/npm-inquirer-readMe-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
 }
