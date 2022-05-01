@@ -8,18 +8,32 @@ const questions = [];
 inquirer
   .prompt([
     {
-      type: 'input',
-      name: 'title',
-      message: 'what is the title of your project',
-    },{
-        type:
-    }
+      type: "input",
+      name: "title",
+      message: "what is the title of your project",
+    },
     {
-        type: 'checkbox',
-        name: 'languages used in making this project',
-        choices:['HTML', 'CSS','Java','Javascript',
-    ]
-    }
+      type: "input",
+      name: "description",
+      message: "Please add a detailed description of your project",
+    },
+    {
+      type: "checkbox",
+      name: "license",
+      message: "please select a license to include in this project",
+      choices: ["MIT", "GNU", "Apache"],
+    },
+    {
+      type: "input",
+      name: "credits",
+      message:
+        "Please include anyone who you would like to give credit to for helping you with this project",
+    },
+    {
+      type: "checkbox",
+      name: "languages used in making this project",
+      choices: ["HTML", "CSS", "Java", "Javascript"],
+    },
   ])
   .then((data) => {
     console.log(data.name);
