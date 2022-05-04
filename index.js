@@ -1,6 +1,7 @@
 // these commands include the inquirer package and tells it to look in the file system as well ('fs')
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generateMarkdown = require("./generatemarkdown");
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
@@ -31,21 +32,22 @@ inquirer
     },
     {
       type: "checkbox",
-      name: "languages used in making this project",
+      name: "languages",
+      message: "please check the languages used in making this project",
       choices: ["HTML", "CSS", "Java", "Javascript"],
+    },
+    {
+      type: "input",
+      name: "usage",
+      message: "Please describe in detail how this project will be used",
     },
   ])
   .then((data) => {
-    let Create = `# <Your-Project-Title>
+    let Create = `# ${data.title}
 
     ## Description
-    
-    Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-    
-    - What was your motivation?
-    - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-    - What problem does it solve?
-    - What did you learn?
+  
+    ${data.description}
     
     ## Table of Contents (Optional)
     
@@ -58,29 +60,19 @@ inquirer
     
     ## Installation
     
-    What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+    ${data.Installation}
     
     ## Usage
     
-    Provide instructions and examples for use. Include screenshots as needed.
-    
-    To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-    
-        ```md
-        ![alt text](assets/images/screenshot.png)
-        ```
+   ${data.Usage}
     
     ## Credits
     
-    List your collaborators, if any, with links to their GitHub profiles.
-    
-    If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-    
-    If you followed tutorials, include links to those here as well.
+    ${data.Credits}
     
     ## License
     
-    The last section of a high-quality R
+    ${data.License}
 
     
     ## Badges
@@ -99,8 +91,9 @@ inquirer
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writefile(filename, JSON.stringify(data, "\t"), (err) =>
+  fs.writefile(filename, JSON.stringify(data, "\t"), (err) =>
     err ? console.log(err) : console.log("Success!")
+  );
 }
 
 // TODO: Create a function to initialize app
